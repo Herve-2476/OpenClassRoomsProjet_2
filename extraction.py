@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import os
+import csv
 
 DOMAINE = "http://books.toscrape.com"
 url = "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
@@ -63,8 +64,16 @@ def extraction_list_books_in_category(url):
         if len(soup.find_all("li",class_="next"))==0:
             break
         url=os.path.dirname(url)+"/"+f"page-{numero_page}.html"
+        numero_page+= 1
     return list_book
 
 l=extraction_list_books_in_category(url)
-for e in l:
-    print (e)
+data_books_in_category=[]
+for url_book in l:
+    data_books_in_category.append(extraction_data_book(url_book))
+
+category="mystery"
+with open(f"csv/{category}.csv","w") as f:
+    data = csv.DictWriter(f,data_books_in_category[0].keys())
+    data.writeheader()
+    data.writerows(data_books_in_category)
