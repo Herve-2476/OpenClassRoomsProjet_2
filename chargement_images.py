@@ -2,16 +2,15 @@ import os
 import csv
 import requests
 
-
-
-dir_csv = os.sep.join([os.getcwd(),"csv"])
-dir_images = os.sep.join([os.getcwd(),"images"])
+dir_csv = "csv"
+dir_images = "images"
+os.makedirs(dir_images,exist_ok=True)
 
 liste_fichiers_csv=os.listdir(dir_csv)
 
 for f in liste_fichiers_csv:
     n=0
-    with open(os.sep.join([dir_csv,f]),"r") as file:
+    with open(os.sep.join([dir_csv,f]),"r",encoding='utf-8') as file:
         obj = csv.DictReader(file)
         for e in obj:
             image_url=e["image_url"]

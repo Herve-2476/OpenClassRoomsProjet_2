@@ -9,4 +9,6 @@ Vous pouvez installez automatiquement ces modules avec la commande suivante.
 "pip install -r requirements.txt"
 
 Le premier fichier, extraction.py va extraire les informations du site et créer les fichiers csv correspondant aux des livres par catégorie.
-Le deuxième fichier, chargement_images.py ouvre chaque fichier csv pour parcourir tous les livres et récupérer pour chaque livre l'url de l'image et télécharger cette image. 
+Le deuxième fichier, chargement_images.py ouvre chaque fichier csv pour parcourir tous les livres et récupérer pour chaque livre l'url de l'image et télécharger cette image.
+
+L'exécution des deux programmes doit se faire impérativement à la racine du projet

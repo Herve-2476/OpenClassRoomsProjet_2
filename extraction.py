@@ -6,7 +6,7 @@ import os
 import csv
 
 DOMAINE = "http://books.toscrape.com/"
-url = "http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+REP_CSV="csv/"
 
 def extraction_data_book(url):
 
@@ -74,7 +74,7 @@ def creation_csv_by_category(url):
         data_books_in_category.append(extraction_data_book(url_book))
 
     category=url.split("/")[-2].split("_")[0]
-    with open(f"csv/{category}.csv","w") as f:
+    with open(f"{REP_CSV}{category}.csv","w",encoding='utf-8') as f:
         obj = csv.DictWriter(f,data_books_in_category[0].keys())
         obj.writeheader()
         obj.writerows(data_books_in_category)
@@ -84,8 +84,13 @@ url =   "http://books.toscrape.com/index.html"
 r = requests.get(url).content
 soup = BeautifulSoup(r,"html.parser")
 
+#création du répertoire csv si inexistant
+os.makedirs(os.sep.join([os.getcwd(),REP_CSV]),exist_ok=True)
+
 #récupération des catégories, des livres de chaque catégories et écriture des fichiers csv
 #un fichier csv par catégorie avec les données indivuelles de chaque livre de cette catégories
+
 for e in soup.find_all("ul",class_="nav nav-list")[0].li.ul.find_all("li"):
-    url_category = DOMAINE+e.a["href"]
+    url_category = DOMAINE+e.a["href"]    
     creation_csv_by_category(url_category)
+    
