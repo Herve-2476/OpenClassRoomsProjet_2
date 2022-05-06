@@ -49,15 +49,13 @@ def extraction_data_book(url):
 
     return data
 
-url = "http://books.toscrape.com/catalogue/category/books/mystery_3/index.html"
 
 def extraction_list_books_in_category(url):
     numero_page = 2
     list_book=[]
     while True:
         r = requests.get(url).content
-        soup = BeautifulSoup(r,"html.parser")
-        #print(soup.prettify())
+        soup = BeautifulSoup(r,"html.parser")        
         for e in soup.find_all("h3"):
             list_book.append(DOMAINE+"catalogue"+e.a["href"][8:])
 
@@ -65,6 +63,7 @@ def extraction_list_books_in_category(url):
             break
         url=os.path.dirname(url)+"/"+f"page-{numero_page}.html"
         numero_page+= 1
+
     return list_book
 
 def creation_csv_by_category(url):
@@ -72,7 +71,6 @@ def creation_csv_by_category(url):
     data_books_in_category=[]
     for url_book in l:
         data_books_in_category.append(extraction_data_book(url_book))
-
     category=url.split("/")[-2].split("_")[0]
     with open(f"{REP_CSV}{category}.csv","w",encoding='utf-8') as f:
         obj = csv.DictWriter(f,data_books_in_category[0].keys())
