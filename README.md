@@ -28,7 +28,7 @@ Vous pouvez installez automatiquement ces modules avec la commande suivante.
 
 #exécution des programmes
 
-Le premier fichier, extraction.py va extraire les informations du site et créer les fichiers csv correspondant aux des livres par catégorie.
+Le premier fichier, extraction.py va extraire les informations du site et créer les fichiers csv correspondants aux données des livres par catégorie.
 
 Le deuxième fichier, chargement_images.py ouvre chaque fichier csv pour parcourir tous les livres et récupérer pour chaque livre l'url de l'image et télécharger cette image.
 
