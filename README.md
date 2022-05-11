@@ -30,7 +30,7 @@ Vous pouvez installez automatiquement ces modules avec la commande suivante.
 * pip install -r requirements.txt
 
 
-## exécution des programmes
+## Exécution des programmes
 
 Le premier fichier, extraction.py va extraire les informations du site et créer les fichiers csv correspondants aux données des livres par catégorie.
 
