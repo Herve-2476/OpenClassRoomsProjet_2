@@ -1,7 +1,7 @@
 Ce projet a pour objet de mettre en oeuvre le processus ETL (Extract,Transform,Load) sur un site test à savoir books.toscrape.com
 
 
-## création du clone du dépot et déplacement dans le répertoire du projet
+## Création du clone du dépot et déplacement dans le répertoire du projet
 
 
 
