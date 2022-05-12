@@ -90,5 +90,5 @@ os.makedirs(os.sep.join([os.getcwd(),REP_CSV]),exist_ok=True)
 for e in soup.find_all("ul",class_="nav nav-list")[0].li.ul.find_all("li"):
     url_category = DOMAINE+e.a["href"]    
     creation_csv_by_category(url_category)
-    break
+    #break
     
